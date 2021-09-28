@@ -49,6 +49,15 @@ class Board
     @grid = [@a1, @b1, @c1, @a2, @b2, @c2, @a3, @b3, @c3]
   end
 
+  def print_board
+    puts '   a   b   c'
+    puts "1 #{@a1}|#{@b1}|#{@c1}"
+    puts '  -----------'
+    puts "2 #{@a2}|#{@b2}|#{@c2}"
+    puts '  -----------'
+    puts "3 #{@a3}|#{@b3}|#{@c3}"
+  end
+
   def space_left?
     @grid.any? { |space| space == '   ' } ? true : false
   end
@@ -72,4 +81,5 @@ game = Board.new
 unless game.game_win? || (game.space_left? == false)
   puts 'The game is about to start'
   puts 'To play it type the area you want to put your marker'
+  game.print_board
 end
