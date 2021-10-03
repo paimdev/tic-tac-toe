@@ -35,6 +35,7 @@ end
 # Blueprint for the actual board and it's methods
 class Board
   include WinStates
+  attr_accessor :a1, :b1, :c1, :a2, :b2, :c2, :a3, :b3, :c3
 
   def initialize
     @a1 = '   '
@@ -69,17 +70,45 @@ class Board
   end
 end
 
+# Player properties and it's methods
 class Player
-  def initialize(marker, name)
+  attr_reader :marker
+
+  def initialize(marker)
     @marker = marker
-    @name = name
+  end
+
+  def play
+    puts 'Where do you want to place your marker?'
+    gets.chomp
   end
 end
 
-game = Board.new
+class Game
+  def initialize
+    puts 'The game is about to start'
+    puts 'To play it type the area you want to put your marker'
 
-unless game.game_win? || (game.space_left? == false)
-  puts 'The game is about to start'
-  puts 'To play it type the area you want to put your marker'
-  game.print_board
+    @board = Board.new
+    @player1 = Player.new(' X ')
+    @player2 = Player.new(' O ')
+  end
+
+  def gameplay
+    while (@board.game_win? == false) || @board.space_left?
+
+      @board.print_board
+      puts 'X to play:'
+      mark_area(@player1)
+      puts 'O to play:'
+      mark_area(@player2)
+    end
+  end
+s
+  def mark_area(area, player)
+    
+  end
 end
+
+test = Game.new
+test.gameplay
