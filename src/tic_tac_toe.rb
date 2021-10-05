@@ -95,18 +95,21 @@ class Game
   end
 
   def gameplay
-    while (@board.game_win? == false) || @board.space_left?
-
+    while true
       @board.print_board
       puts 'X to play:'
       mark_area(@player1)
+      @board.print_board
+      puts @board.game_win?
       puts 'O to play:'
       mark_area(@player2)
     end
   end
-s
-  def mark_area(area, player)
-    
+
+  def mark_area(player)
+    puts 'Choose your area eg: a1, b2, c3...'
+    area = gets.chomp
+    @board.send("#{area}=", player.marker)
   end
 end
 
