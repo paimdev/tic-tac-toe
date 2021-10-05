@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Module that chacks wheather the game was on or not in all possible combinations
+# Module that chacks wheather the game was won or not in all possible combinations
 module WinStates
   def horizontal_win?
     return true if @a1 == ' X ' && @b1 == ' X ' && @c1 == ' X '
